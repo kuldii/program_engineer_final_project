@@ -12,7 +12,9 @@ def load_image(uploadedFile):
     else:
         return None
 
+@st.cache
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
+@st.cache
 model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
 
 st.title("Final Project - Image to Text")
