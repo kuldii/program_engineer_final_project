@@ -3,20 +3,24 @@ import streamlit as st
 from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration
 
-def load_image(uploadedFile):
-    if uploadedFile is not None:
-        image_data = uploadedFile.getvalue()
-        st.image(image_data, width= 200)
-        st.write("Image Input : ", uploadedFile.name)
+
+def load_image(uploaded_file):
+    if uploaded_file is not None:
+        image_data = uploaded_file.getvalue()
+        st.image(image_data, width=200)
+        st.write("Image Input : ", uploaded_file.name)
         return Image.open(io.BytesIO(image_data)).convert('RGB')
     else:
         return None
 
+
 processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
+
 
 @st.cache
 def load_model():
     return BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
+
 
 model = load_model()
 
