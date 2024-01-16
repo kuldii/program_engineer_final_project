@@ -29,6 +29,7 @@ def load_image(uploaded_file):
 
         # Отображаем название загруженного изображения
         st.write("Image Input : ", uploaded_file.name)
+        
         # Возвращаем объект изображения Image из библиотеки PIL (Python Imaging Library), сконвертированный в формат RGB
         return Image.open(io.BytesIO(image_data)).convert('RGB')
 
@@ -41,6 +42,13 @@ processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-larg
 # Результат функции кешируется для повторного использования
 @st.cache
 def load_model():
+     """
+    Функция для загрузки модели для генерации текстовых описаний изображений.
+
+    Returns:
+    - model: BlipForConditionalGeneration
+        Загруженная модель для генерации текстовых описаний изображений.
+    """
     return BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
 
 
