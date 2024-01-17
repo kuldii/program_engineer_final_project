@@ -35,6 +35,7 @@ git clone https://github.com/program-engineer-final-project.git
 
 ## Шаг 2: Установка зависимостей
 Перейдите в каталог проекта и установите необходимые зависимости с помощью команды:
+pip install --upgrade pip
 pip install -r requirements.txt
 
 ## Шаг 3: Запуск приложения
