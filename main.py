@@ -4,7 +4,6 @@ import streamlit as st
 from PIL import Image
 from transformers import BlipProcessor, BlipForConditionalGeneration
 
-
 def load_image(uploaded_file):
     """
     Функция загружает изображение из переданного файла и отображает его с помощью библиотеки streamlit.
@@ -40,14 +39,15 @@ processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-larg
 
 # Функция для загрузки модели для генерации текстовых описаний на основе изображений
 # Результат функции кешируется для повторного использования
-@st.cache
+# @st.cache <== Deprecated
+@st.cache_resource
 def load_model():
-     """
+    """
     Функция для загрузки модели для генерации текстовых описаний изображений.
 
     Returns:
     - model: BlipForConditionalGeneration
-        Загруженная модель для генерации текстовых описаний изображений.
+    Загруженная модель для генерации текстовых описаний изображений.
     """
     return BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large")
 
